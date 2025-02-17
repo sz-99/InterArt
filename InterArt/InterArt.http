@@ -1,0 +1,6 @@
+@InterArt_HostAddress = http://localhost:5140
+
+GET {{InterArt_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
