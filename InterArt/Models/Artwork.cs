@@ -10,7 +10,7 @@
         public string PlaceOfOrigin { get; set; } = string.Empty;
         public string Medium {  get; set; } = string.Empty;
         public string ImageId {  get; set; } = string.Empty;
-        public 
+        
 
     }
 }
