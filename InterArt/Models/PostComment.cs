@@ -4,8 +4,8 @@
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public string ArtworkId {  get; set; }
-        public string CommentText {  get; set; }
+        public string ArtworkId { get; set; } = string.Empty;
+        public string CommentText { get; set; } = string.Empty;
 
     }
 }
