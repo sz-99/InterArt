@@ -21,5 +21,6 @@ namespace InterArt.Controllers
             var artworks = _artworkService.LoadArtworks();
             return Ok(artworks);
         }
+
     }
 }
