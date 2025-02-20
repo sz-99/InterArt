@@ -21,7 +21,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-ArtworkRepository.GetArtworks();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

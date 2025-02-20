@@ -1,4 +1,5 @@
-﻿using InterArt.Repository;
+﻿using InterArt.Models;
+using InterArt.Repository;
 
 namespace InterArt.Services
 {
@@ -10,9 +11,15 @@ namespace InterArt.Services
         {
             _artworkRepository = artworkRepository;
         }
+
+        public List<Artwork> LoadArtworks()
+        {
+            return _artworkRepository.LoadArtworks();
+        }
     }
 
     public interface IArtworkService
     {
+        List<Artwork> LoadArtworks();
     }
 }

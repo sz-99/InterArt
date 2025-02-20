@@ -5,25 +5,24 @@ namespace InterArt.Repository
 {
     public class ArtworkRepository : IArtworkRepository
     {
-        public static List<Artwork> Artworks { get; set; } = new List<Artwork>();
+        public  List<Artwork> Artworks { get; set; } = new List<Artwork>();
 
-        public static void GetArtworks()
+        public  List<Artwork> LoadArtworks()
         {
+            var artworks = new List<Artwork>();
             string[] file = File.ReadAllLines("./Resources/allArtworks.jsonl");
             foreach(string line in file)
             {
                 var artwork = JsonSerializer.Deserialize<Artwork>(line);
-                Artworks.Add(artwork);
+                artworks.Add(artwork);
             }
-            var firstTenArts = Artworks.Take(10).ToList();
-            foreach(var artwork in firstTenArts)
-            {
-                Console.WriteLine(artwork.Title);
-            }
+            
+            return artworks.Take(10).ToList();
         }
     }
     public interface IArtworkRepository
     {
+        public List<Artwork> LoadArtworks();
     }
 
 }

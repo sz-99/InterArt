@@ -18,7 +18,8 @@ namespace InterArt.Controllers
         [HttpGet]
         public IActionResult GetArtworks()
         {
-            return Ok(new Artwork());
+            var artworks = _artworkService.LoadArtworks();
+            return Ok(artworks);
         }
     }
 }
