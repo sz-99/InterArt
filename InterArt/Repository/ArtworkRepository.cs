@@ -1,23 +1,22 @@
 ﻿using InterArt.Models;
+using InterArt_Backend.DBContext;
 using System.Text.Json;
 
 namespace InterArt.Repository
 {
     public class ArtworkRepository : IArtworkRepository
     {
-        public  List<Artwork> Artworks { get; set; } = new List<Artwork>();
+        private ArtworkDbContext _artworkDbContext;
+
+        public ArtworkRepository(ArtworkDbContext artworkDbContext)
+        {
+            _artworkDbContext = artworkDbContext;
+        }
 
         public  List<Artwork> LoadArtworks()
         {
-            var artworks = new List<Artwork>();
-            string[] file = File.ReadAllLines("./Resources/allArtworks.jsonl");
-            foreach(string line in file)
-            {
-                var artwork = JsonSerializer.Deserialize<Artwork>(line);
-                artworks.Add(artwork);
-            }
-            
-            return artworks.Take(10).ToList();
+            return _artworkDbContext.Artworks.ToList();
+
         }
     }
     public interface IArtworkRepository
