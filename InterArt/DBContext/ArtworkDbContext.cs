@@ -9,11 +9,12 @@ namespace InterArt_Backend.DBContext
     public class ArtworkDbContext : DbContext
     {
         public DbSet<Artwork> Artworks { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Reply> Replies { get; set; }
         public ArtworkDbContext(DbContextOptions<ArtworkDbContext> options):base(options) {}
 
         
-    
-
         }
 }
 

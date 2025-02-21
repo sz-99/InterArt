@@ -3,6 +3,7 @@ using InterArt_Backend.DBContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InterArt_Backend.Migrations
 {
     [DbContext(typeof(ArtworkDbContext))]
-    partial class ArtworkDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250221142038_AddUsersCommentsReplies")]
+    partial class AddUsersCommentsReplies
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
