@@ -6,16 +6,16 @@ namespace InterArt.Repository
 {
     public class ArtworkRepository : IArtworkRepository
     {
-        private ArtworkDbContext _artworkDbContext;
+        private ArtworkDbContext _db;
 
         public ArtworkRepository(ArtworkDbContext artworkDbContext)
         {
-            _artworkDbContext = artworkDbContext;
+            _db = artworkDbContext;
         }
 
         public  List<Artwork> LoadArtworks()
         {
-            return _artworkDbContext.Artworks.ToList();
+            return _db.Artworks.ToList();
 
         }
     }
