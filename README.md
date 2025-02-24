@@ -6,7 +6,7 @@ InterArt is a web application that allows users to engage with artworks in museu
 ## Tech Stack
 - **Backend:** C# ASP.NET Core, Entity Framework, MVC  
 - **Frontend:** React, JavaScript  
-- **Database:** Microsoft SQL Server  
+- **Database:** AWS, Microsoft SQL Server  
 - **API Integration:** Art Institute of Chicago API  
 
 ## Features
