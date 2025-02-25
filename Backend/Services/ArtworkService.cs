@@ -16,10 +16,21 @@ namespace InterArt.Services
         {
             return _artworkRepository.LoadArtworks();
         }
+
+        public Artwork FetchArtworkById(int id)
+        {
+            return _artworkRepository.FetchArtworkById(id);
+        }
+        public Artwork FetchRandomArtwork()
+        {
+            return _artworkRepository.FetchRandomArtwork();
+        }
     }
 
     public interface IArtworkService
     {
+        Artwork FetchArtworkById(int id);
+        Artwork FetchRandomArtwork();
         List<Artwork> LoadArtworks();
     }
 }

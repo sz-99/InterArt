@@ -22,5 +22,37 @@ namespace InterArt.Controllers
             return Ok(artworks);
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult GetArtworkById(int id)
+        {
+            try
+            {
+                var artwork = _artworkService.FetchArtworkById(id);
+                if(artwork == null) return NotFound();
+                return Ok(artwork);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(500, new { message = "An error occurred while fetching the artwork. Please try again later." });
+            }
+        }
+        [HttpGet]
+        [Route("random")]
+        public IActionResult GetRandomArtwork()
+        {
+            try
+            {
+                var artwork = _artworkService.FetchRandomArtwork();
+                if (artwork == null) return NotFound();
+                return Ok(artwork);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(500, new { message = "An error occurred while fetching the artwork. Please try again later." });
+            }
+        }
     }
 }

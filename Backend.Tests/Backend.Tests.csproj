@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InterArt\InterArt Backend.csproj" />
+    <ProjectReference Include="..\Backend\InterArt Backend.csproj" />
   </ItemGroup>
 
   <ItemGroup>

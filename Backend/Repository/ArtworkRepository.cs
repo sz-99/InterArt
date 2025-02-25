@@ -18,9 +18,27 @@ namespace InterArt.Repository
             return _db.Artworks.ToList();
 
         }
+        public Artwork FetchArtworkById(int id)
+        {
+            var artwork = _db.Artworks.First(x => x.Id == id);
+            if (artwork == null) return null;
+            return artwork;
+        }
+
+        public Artwork FetchRandomArtwork()
+        {
+
+            var count = _db.Artworks.Count();
+            if (count == 0) return null;
+
+            var randomIndex = new Random().Next(0, count);
+            return _db.Artworks.Skip(randomIndex).FirstOrDefault();
+        }
     }
     public interface IArtworkRepository
     {
+        Artwork FetchArtworkById(int id);
+        Artwork FetchRandomArtwork();
         public List<Artwork> LoadArtworks();
     }
 
