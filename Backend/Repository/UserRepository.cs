@@ -27,10 +27,20 @@ namespace InterArt_Backend.Repository
             _db.SaveChanges();
             return newUser;
         }
+
+        public bool LoginUser(UserLoginDTO userLoginDTO)
+        {
+            User user = _db.Users.FirstOrDefault(u=>u.Email == userLoginDTO.Email);
+            if (user == null)
+                return false;
+
+            return BCrypt.Net.BCrypt.Verify(userLoginDTO.Password, user.Password);
+        }
     }
 
     public interface IUserRepository
     {
+        bool LoginUser(UserLoginDTO userLoginDTO);
         User SignUpUser(UserSignUpDTO userSignUpDTO);
     }
 }

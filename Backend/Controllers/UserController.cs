@@ -29,8 +29,9 @@ namespace InterArt_Backend.Controllers
 
         public IActionResult PostLogin(UserLoginDTO userLoginDTO)
         {
-
-            return Ok();
+            return _userService.LoginUser(userLoginDTO)?
+                Ok() : BadRequest("Error: Email or Password Incorrect.");
+            
         }
     }
 }

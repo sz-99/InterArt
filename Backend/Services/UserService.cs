@@ -24,10 +24,16 @@ namespace InterArt_Backend.Services
             };
             return _userRepository.SignUpUser(newUser);
         }
+
+        public bool LoginUser(UserLoginDTO userLoginDTO)
+        {
+            return _userRepository.LoginUser(userLoginDTO);
+        }
     }
 
     public interface IUserService
     {
+        bool LoginUser(UserLoginDTO userLoginDTO);
         User SignUpUser(UserSignUpDTO userSignUpDTO);
     }
 }
