@@ -1,6 +1,7 @@
 ﻿using InterArt_Backend.Models.DTOs;
 using InterArt_Backend.Repository;
 using InterArt.Models;
+using BCrypt.Net;
 
 namespace InterArt_Backend.Services
 {
@@ -14,7 +15,14 @@ namespace InterArt_Backend.Services
         }
         public User SignUpUser(UserSignUpDTO userSignUpDTO)
         {
-            return _userRepository.SignUpUser(userSignUpDTO);
+            UserSignUpDTO newUser = new UserSignUpDTO()
+            {
+                UserName = userSignUpDTO.UserName,
+                Name = userSignUpDTO.Name,
+                Email = userSignUpDTO.Email,
+                Password = BCrypt.Net.BCrypt.HashPassword(userSignUpDTO.Password)
+            };
+            return _userRepository.SignUpUser(newUser);
         }
     }
 

@@ -15,11 +15,22 @@ namespace InterArt_Backend.Controllers
             _userService = userService;
         }
         [HttpPost]
+        [Route("signup")]
+
         public IActionResult PostSignUp(UserSignUpDTO signUpDTO)
         {
             var result = _userService.SignUpUser(signUpDTO);
             if(result != null) return Ok(result);
             return BadRequest();
+        }
+
+        [HttpPost]
+        [Route("login")]
+
+        public IActionResult PostLogin(UserLoginDTO userLoginDTO)
+        {
+
+            return Ok();
         }
     }
 }
