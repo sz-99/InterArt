@@ -18,10 +18,28 @@ namespace InterArt.Repository
         {
             return _db.Comments.Where(a => a.ArtworkId == artworkId).ToList();
         }
+
+        public bool AddNewComment(CommentDTO commentDTO)
+        {
+            if(commentDTO.ArtworkId == null || commentDTO.CommentText == null || commentDTO.UserId == 0)
+                return false;
+            var newComment = new Comment()
+            {
+                UserId = commentDTO.UserId,
+                ArtworkId = commentDTO.ArtworkId,
+                CommentText = commentDTO.CommentText,
+                Upvote = 0,
+                Downvote = 0
+            };
+            _db.Comments.Add(newComment);
+            _db.SaveChanges();
+            return true;
+        }
     }
     public interface ICommentRepository
     {
         List<Comment> LoadCommentsByArtworkId(string artworkId);
+        public bool AddNewComment(CommentDTO commentDTO);
     }
 
 }

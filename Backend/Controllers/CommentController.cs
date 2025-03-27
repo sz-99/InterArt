@@ -23,6 +23,14 @@ namespace InterArt.Controllers
             return BadRequest("No comments found.");
         }
 
+        [HttpPost]
+        public IActionResult PostComment(CommentDTO commentDTO)
+        {
+            bool result = _commentService.AddNewComment(commentDTO);
+            return result? Ok(): BadRequest("Comment cannot be posted");
+            
+        }
+
         
     }
 }

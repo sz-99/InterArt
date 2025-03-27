@@ -19,11 +19,17 @@ namespace InterArt.Services
             return _commentRepository.LoadCommentsByArtworkId(artworkId);
         }
 
+        public bool AddNewComment(CommentDTO commentDTO)
+        {
+            return _commentRepository.AddNewComment(commentDTO);
+        }
+
     }
 
     public interface ICommentService
     {
         List<Comment> LoadCommentsByArtworkId(string artworkId);
+        public bool AddNewComment(CommentDTO commentDTO);
        
     }
 }
