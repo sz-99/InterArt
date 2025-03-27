@@ -18,7 +18,7 @@ namespace InterArt.Controllers
         [HttpGet]
         public IActionResult GetComments(string artworkId)
         {
-            var comments = _artworkService.LoadCommentsByArtworkId(artworkId);
+            var comments = _commentService.LoadCommentsByArtworkId(artworkId);
             if(comments !=null)return Ok(comments);
             return BadRequest("No comments found.");
         }
