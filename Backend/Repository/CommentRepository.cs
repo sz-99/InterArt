@@ -35,11 +35,30 @@ namespace InterArt.Repository
             _db.SaveChanges();
             return true;
         }
+
+        public Comment UpdateComment(int commentId, CommentDTO commentDTO)
+        {
+            if (string.IsNullOrEmpty(commentDTO.ArtworkId) || 
+            string.IsNullOrEmpty(commentDTO.CommentText) || 
+            commentDTO.UserId == 0)
+            {
+                return null;
+            }
+            
+            var comment = _db.Comments.FirstOrDefault(a => a.Id == commentId);
+            if (comment == null) return null;
+            
+            comment.CommentText = commentDTO.CommentText;
+            _db.SaveChanges();
+
+            return comment;
+        }
     }
     public interface ICommentRepository
     {
         List<Comment> LoadCommentsByArtworkId(string artworkId);
         public bool AddNewComment(CommentDTO commentDTO);
+        Comment UpdateComment(int commentId, CommentDTO commentDTO);
     }
 
 }

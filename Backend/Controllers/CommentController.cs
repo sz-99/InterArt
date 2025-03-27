@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using InterArt.Models;
 using InterArt.Services;
+using Microsoft.Identity.Client;
 
 namespace InterArt.Controllers
 {
@@ -27,8 +28,17 @@ namespace InterArt.Controllers
         public IActionResult PostComment(CommentDTO commentDTO)
         {
             bool result = _commentService.AddNewComment(commentDTO);
-            return result? Ok(): BadRequest("Comment cannot be posted");
+            return result? Ok(): BadRequest("Comment cannot be posted.");
             
+        }
+
+        [HttpPatch]
+        public IActionResult PatchComment(int commentId, CommentDTO commentDTO)
+        {
+            var newComment = _commentService.UpdateComment(commentId, commentDTO);
+            return newComment != null ? 
+            Ok(newComment) 
+            : BadRequest("Comment cannot be edited.");
         }
 
         
