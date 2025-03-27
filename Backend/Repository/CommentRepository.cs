@@ -47,11 +47,21 @@ namespace InterArt.Repository
             
             var comment = _db.Comments.FirstOrDefault(a => a.Id == commentId);
             if (comment == null) return null;
-            
+
             comment.CommentText = commentDTO.CommentText;
             _db.SaveChanges();
 
             return comment;
+        }
+
+        public bool DeleteComment(int commentId)
+        {
+            var commentToDelete = _db.Comments.FirstOrDefault(c=>c.Id == commentId);
+            if(commentToDelete == null) return false;
+
+            _db.Comments.Remove(commentToDelete);
+            _db.SaveChanges();
+            return true;
         }
     }
     public interface ICommentRepository
@@ -59,6 +69,7 @@ namespace InterArt.Repository
         List<Comment> LoadCommentsByArtworkId(string artworkId);
         public bool AddNewComment(CommentDTO commentDTO);
         Comment UpdateComment(int commentId, CommentDTO commentDTO);
+        bool DeleteComment(int commentId);
     }
 
 }

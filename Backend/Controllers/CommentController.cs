@@ -41,6 +41,13 @@ namespace InterArt.Controllers
             : BadRequest("Comment cannot be edited.");
         }
 
+        [HttpDelete]
+        public IActionResult DeleteComment(int commentId)
+        {
+            bool result = _commentService.DeleteComment(commentId);
+            return result? Ok(): BadRequest();
+        }
+
         
     }
 }

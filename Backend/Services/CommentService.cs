@@ -29,6 +29,11 @@ namespace InterArt.Services
             return _commentRepository.UpdateComment(commentId, commentDTO);
         }
 
+        public bool DeleteComment(int commentId)
+        {
+            return _commentRepository.DeleteComment(commentId);
+        }
+
     }
 
     public interface ICommentService
@@ -36,6 +41,7 @@ namespace InterArt.Services
         List<Comment> LoadCommentsByArtworkId(string artworkId);
         public bool AddNewComment(CommentDTO commentDTO);
         Comment UpdateComment(int commentId, CommentDTO commentDTO);
+        bool DeleteComment(int commentId);
        
     }
 }
