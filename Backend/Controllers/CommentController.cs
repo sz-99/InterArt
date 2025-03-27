@@ -55,6 +55,13 @@ namespace InterArt.Controllers
             return result? Ok(): BadRequest();
         }
 
+        [HttpPatch]
+        public IActionResult PatchDownvoteComment(int commentId)
+        {
+            bool result = _commentService.DownvoteComment(commentId);
+            return result? Ok(): BadRequest();
+        }
+
         
     }
 }

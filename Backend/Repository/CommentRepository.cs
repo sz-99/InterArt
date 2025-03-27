@@ -73,6 +73,16 @@ namespace InterArt.Repository
             _db.SaveChanges();
             return true;
         }
+
+        public bool DownvoteComment(int commentId)
+        {
+            var comment = _db.Comments.FirstOrDefault(c=>c.Id==commentId);
+            if(comment == null) return false;
+
+            comment.Downvote++;
+            _db.SaveChanges();
+            return true;
+        }
     }
     public interface ICommentRepository
     {
@@ -81,6 +91,7 @@ namespace InterArt.Repository
         Comment UpdateComment(int commentId, CommentDTO commentDTO);
         bool DeleteComment(int commentId);
         bool UpvoteComment(int commentId);
+        bool DownvoteComment(int commentId);
     }
 
 }
