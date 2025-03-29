@@ -19,11 +19,17 @@ namespace InterArt.Services
             return _replyRepository.LoadRepliesByCommentId(commentId);
         }
 
+        public Reply AddNewReply(ReplyDTO replyDTO)
+        {
+            return _replyRepository.AddNewReply(replyDTO);
+        }
+
     }
 
     public interface IReplyService
     {
         List<Reply> LoadRepliesBycommentId(int commentId);
+        public Reply AddNewReply(ReplyDTO replyDTO);
        
     }
 }

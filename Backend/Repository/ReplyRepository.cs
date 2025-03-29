@@ -18,10 +18,24 @@ namespace InterArt.Repository
         {
             return _db.Replies.Where(a => a.CommentId == commentId).ToList();
         }
+
+        public Reply AddNewReply(ReplyDTO replyDTO)
+        {
+            var newReply = new Reply()
+            {
+                UserId = replyDTO.UserId,
+                CommentId = replyDTO.CommentId,
+                ReplyText = replyDTO.ReplyText
+            };
+            _db.Replies.Add(newReply);
+            _db.SaveChanges();
+            return newReply;
+        }
     }
     public interface IReplyRepository
     {
         List<Reply> LoadRepliesByCommentId(int commentId);
+        public Reply AddNewReply(ReplyDTO replyDTO);
     }
 
 }

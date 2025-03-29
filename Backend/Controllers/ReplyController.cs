@@ -23,6 +23,14 @@ namespace InterArt.Controllers
             return BadRequest("No replies found.");
         }
 
+        [HttpPost]
+        public IActionResult PostReply(ReplyDTO replyDTO)
+        {
+            var reply = _replyService.AddNewReply(replyDTO);
+            if(reply != null) return Ok(reply);
+            return BadRequest();
+        }
+
         
     }
 }
