@@ -64,12 +64,22 @@ namespace InterArt.Repository
 
             return reply;
         }
+        public bool DeleteReply(int replyId)
+        {
+            var reply = _db.Replies.FirstOrDefault(a=>a.Id == replyId);
+            if(reply == null ) return false;
+
+            _db.Replies.Remove(reply);
+            _db.SaveChanges();
+            return true;
+        }
     }
     public interface IReplyRepository
     {
         List<Reply> LoadRepliesByCommentId(int commentId);
         Reply AddNewReply(ReplyDTO replyDTO);
         Reply UpdateReply(int replyId, ReplyDTO replyDTO);
+        bool DeleteReply(int replyId);
     }
 
 }

@@ -29,6 +29,11 @@ namespace InterArt.Services
             return _replyRepository.UpdateReply(replyId, replyDTO);
         }
 
+        public bool DeleteReply(int replyId)
+        {
+            return _replyRepository.DeleteReply(replyId);
+        }
+
     }
 
     public interface IReplyService
@@ -36,6 +41,7 @@ namespace InterArt.Services
         List<Reply> LoadRepliesBycommentId(int commentId);
         Reply AddNewReply(ReplyDTO replyDTO);
         Reply UpdateReply(int replyId, ReplyDTO replyDTO);
+        bool DeleteReply(int replyId);
        
     }
 }

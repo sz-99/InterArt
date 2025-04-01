@@ -40,6 +40,13 @@ namespace InterArt.Controllers
             : BadRequest("Reply cannot be edited.");
         }
 
+        [HttpDelete]
+        public IActionResult DeleteReply(int replyId)
+        {
+            var result = _replyService.DeleteReply(replyId);
+            return result? Ok() : BadRequest("Reply does not exist.");
+        }
+
         
     }
 }
