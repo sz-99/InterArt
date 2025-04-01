@@ -31,6 +31,15 @@ namespace InterArt.Controllers
             return BadRequest();
         }
 
+         [HttpPatch]
+        public IActionResult PatchReply(int replyId, ReplyDTO replyDTO)
+        {
+            var newReply = _replyService.UpdateReply(replyId, replyDTO);
+            return newReply != null ? 
+            Ok(newReply) 
+            : BadRequest("Reply cannot be edited.");
+        }
+
         
     }
 }

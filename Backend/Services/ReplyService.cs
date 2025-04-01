@@ -24,12 +24,18 @@ namespace InterArt.Services
             return _replyRepository.AddNewReply(replyDTO);
         }
 
+        public Reply UpdateReply(int replyId, ReplyDTO replyDTO)
+        {
+            return _replyRepository.UpdateReply(replyId, replyDTO);
+        }
+
     }
 
     public interface IReplyService
     {
         List<Reply> LoadRepliesBycommentId(int commentId);
-        public Reply AddNewReply(ReplyDTO replyDTO);
+        Reply AddNewReply(ReplyDTO replyDTO);
+        Reply UpdateReply(int replyId, ReplyDTO replyDTO);
        
     }
 }
