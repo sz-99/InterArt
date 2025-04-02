@@ -27,6 +27,10 @@ builder.Services.AddScoped<IArtworkRepository, ArtworkRepository>();
 builder.Services.AddScoped<IArtworkService, ArtworkService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ICommentService, CommentService>();
+builder.Services.AddScoped<IReplyRepository, ReplyRepository>();
+builder.Services.AddScoped<IReplyService, ReplyService>();
 
 if(builder.Environment.IsDevelopment())
 {
