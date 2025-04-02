@@ -16,6 +16,7 @@ namespace InterArt.Controllers
         }
 
         [HttpGet]
+        [Route("{replyId}")]
         public IActionResult GetReplies(int commentId)
         {
             var replies = _replyService.LoadRepliesBycommentId(commentId);
@@ -31,7 +32,8 @@ namespace InterArt.Controllers
             return BadRequest();
         }
 
-         [HttpPatch]
+        [HttpPatch]
+        [Route("{replyId}")]
         public IActionResult PatchReply(int replyId, ReplyDTO replyDTO)
         {
             var newReply = _replyService.UpdateReply(replyId, replyDTO);
@@ -41,12 +43,12 @@ namespace InterArt.Controllers
         }
 
         [HttpDelete]
+        [Route("{replyId}")]
         public IActionResult DeleteReply(int replyId)
         {
             var result = _replyService.DeleteReply(replyId);
             return result? Ok() : BadRequest("Reply does not exist.");
         }
-
         
     }
 }

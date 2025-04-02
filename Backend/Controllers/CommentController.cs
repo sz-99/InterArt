@@ -33,6 +33,7 @@ namespace InterArt.Controllers
         }
 
         [HttpPatch]
+        [Route("{commentId}")]
         public IActionResult PatchComment(int commentId, CommentDTO commentDTO)
         {
             var newComment = _commentService.UpdateComment(commentId, commentDTO);
@@ -42,6 +43,7 @@ namespace InterArt.Controllers
         }
 
         [HttpDelete]
+        [Route("{commentId}")]
         public IActionResult DeleteComment(int commentId)
         {
             bool result = _commentService.DeleteComment(commentId);
@@ -49,6 +51,7 @@ namespace InterArt.Controllers
         }
 
         [HttpPatch]
+        [Route("{commentId}/up")]
         public IActionResult PatchUpvoteComment(int commentId)
         {
             bool result = _commentService.UpvoteComment(commentId);
@@ -56,6 +59,8 @@ namespace InterArt.Controllers
         }
 
         [HttpPatch]
+        [Route("{commentId}/down")]
+
         public IActionResult PatchDownvoteComment(int commentId)
         {
             bool result = _commentService.DownvoteComment(commentId);

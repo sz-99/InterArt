@@ -31,22 +31,6 @@ namespace InterArt.Repository
             _db.SaveChanges();
             return newReply;
         }
-        /* 
-        if (string.IsNullOrEmpty(commentDTO.ArtworkId) || 
-            string.IsNullOrEmpty(commentDTO.CommentText) || 
-            commentDTO.UserId == 0)
-            {
-                return null;
-            }
-            
-            var comment = _db.Comments.FirstOrDefault(a => a.Id == commentId);
-            if (comment == null) return null;
-
-            comment.CommentText = commentDTO.CommentText;
-            _db.SaveChanges();
-
-            return comment;
-        */
         public Reply UpdateReply(int replyId, ReplyDTO replyDTO)
         {
             if(string.IsNullOrEmpty(replyDTO.ReplyText)||
