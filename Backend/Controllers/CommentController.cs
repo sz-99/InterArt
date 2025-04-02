@@ -17,6 +17,7 @@ namespace InterArt.Controllers
         }
 
         [HttpGet]
+        [Route("{artworkId}")]
         public IActionResult GetComments(string artworkId)
         {
             var comments = _commentService.LoadCommentsByArtworkId(artworkId);

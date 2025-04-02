@@ -16,7 +16,9 @@ namespace InterArt.Repository
 
         public  List<Reply> LoadRepliesByCommentId(int commentId)
         {
-            return _db.Replies.Where(a => a.CommentId == commentId).ToList();
+            var replies = _db.Replies.Where(a => a.CommentId == commentId).ToList();
+            if(replies.Count == 0) return null;
+            return replies;
         }
 
         public Reply AddNewReply(ReplyDTO replyDTO)

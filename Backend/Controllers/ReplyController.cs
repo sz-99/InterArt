@@ -16,7 +16,7 @@ namespace InterArt.Controllers
         }
 
         [HttpGet]
-        [Route("{replyId}")]
+        [Route("{commentId}")]
         public IActionResult GetReplies(int commentId)
         {
             var replies = _replyService.LoadRepliesBycommentId(commentId);
