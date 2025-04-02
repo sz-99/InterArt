@@ -14,19 +14,16 @@ function App() {
 
   return (
     <>
-    <Router>
-      <Routes>
-        <Route path="user/login" element={<Login/>} />
-      </Routes>
-    </Router>
     <div>
       <NavigationBar/>
     </div>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+    <Router>
+      <Routes>
+        <Route path="login" element={<Login/>} />
+      </Routes>
+    </Router>
+    
+     
       
     </>
   )

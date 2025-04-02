@@ -1,28 +1,27 @@
 import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap"; 
 import logo from "../assets/InterArtLogo.png";
 
 const NavigationBar = () => {
-    return(
-        <Navbar bg="primary" variant="dark" expand="lg">
-            <Container>
-                <Navbar.Brand href="/">
-                <img src={logo} alt="InterArt Logo" width="40" height="30" className="d-inline-block align-top"/>
-                {" "}
-                </Navbar.Brand>
+  return (
+    <nav className="bg-blue-700 text-black p-4 shadow-lg fixed top-0 w-full z-50">
+      <div className="container mx-auto flex justify-between items-center">
+        {/* Logo centered */}
+        <div className="flex-1 flex justify-center">
+          <a href="/" className="flex items-center">
+            <img src={logo} alt="InterArt Logo" className="w-8 h-8" />
+          </a>
+        </div>
 
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="ms-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/gallery">Gallery</Nav.Link>
-                        <Nav.Link href="/about">About</Nav.Link>
-                        <Nav.Link href="/login">Login</Nav.Link>
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
-
-    );
+        {/* Nav Links - flex across screen */}
+        <div className="flex-1 flex justify-evenly text-xl font-bold">
+          <a href="/" className="hover:text-gray-800 transition">Home</a>
+          <a href="/gallery" className="hover:text-gray-800 transition">Gallery</a>
+          <a href="/about" className="hover:text-gray-800 transition">About</a>
+          <a href="/login" className="hover:text-gray-800 transition">Login</a>
+        </div>
+      </div>
+    </nav>
+  );
 };
+
 export default NavigationBar;
